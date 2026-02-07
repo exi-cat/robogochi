@@ -11,3 +11,11 @@ def feed(pet: Pet) -> Pet:
     pet.energy = clamp(pet.energy - 5)
     pet.mood = clamp(pet.mood + 2)
     return pet
+
+
+def play(pet: Pet) -> Pet:
+    """Play with Robogochi so he could learn faster"""
+    pet.mood = clamp(pet.mood + 30)
+    pet.energy = clamp(pet.energy - 10)
+    pet.data = clamp(pet.data + 3)
+    return pet

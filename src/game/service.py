@@ -1,6 +1,6 @@
 from typing import Dict, Optional
 from src.game.models import Pet
-from src.game.actions import Pet, feed
+from src.game.actions import Pet, feed, play
 
 _pets_by_user: Dict[int, Pet] = {}
 
@@ -22,3 +22,11 @@ def feed_pet(user_id: int) -> Optional[Pet]:
         return None
 
     return feed(pet)
+
+
+def play_pet(user_id: int) -> Optional[Pet]:
+    pet = get_pet(user_id)
+    if pet is None:
+        return None
+
+    return play(pet)

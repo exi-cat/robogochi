@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import Command
 
-from src.game.service import get_pet, create_pet, feed_pet
+from src.game.service import get_pet, create_pet, feed_pet, play_pet
 
 router = Router()
 
@@ -69,3 +69,16 @@ async def feed(message: Message):
         return
 
     await reply(message, "Informaition received. Data hunger level lowers")
+
+
+@router.message(Command("play"))
+async def play(message: Message):
+    user_id = get_user_id(message)
+    if user_id is None:
+        return
+    pet = play_pet(user_id)
+    if pet is None:
+        await reply(message, "No Robogochi detected. Create one usinf /start command")
+        return
+
+    await reply(message, "Interaction succesfull. Neuron processes stimulated")
