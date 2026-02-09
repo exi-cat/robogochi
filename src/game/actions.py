@@ -19,3 +19,11 @@ def play(pet: Pet) -> Pet:
     pet.energy = clamp(pet.energy - 10)
     pet.data = clamp(pet.data + 3)
     return pet
+
+
+def recharge(pet: Pet) -> Pet:
+    """Don`t forget to charge Robogochi"""
+    pet.energy = clamp(pet.energy + 100)
+    pet.data = clamp(pet.data - 15)
+    pet.mood = clamp(pet.mood - 5)
+    return pet
