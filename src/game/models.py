@@ -1,3 +1,4 @@
+import time
 from dataclasses import dataclass
 
 
@@ -5,6 +6,7 @@ from dataclasses import dataclass
 @dataclass
 class Pet:
     name: str
+    last_tick: float = time.time()
     data: int = 100
     energy: int = 100
     mood: int = 100

@@ -1,6 +1,7 @@
 from typing import Dict, Optional
 from src.game.models import Pet
 from src.game.actions import Pet, feed, play, recharge
+from src.game.engine import apply_tick
 
 _pets_by_user: Dict[int, Pet] = {}
 
@@ -38,3 +39,12 @@ def recharge_pet(user_id: int) -> Optional[Pet]:
         return None
 
     return recharge(pet)
+
+
+def touch_pet(user_id: int) -> Optional[Pet]:
+    pet = get_pet(user_id)
+    if pet is None:
+        return None
+    pet = apply_tick(pet, now=1)
+
+    return pet
